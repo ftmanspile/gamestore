@@ -1,0 +1,57 @@
+<head>
+
+</head>
+<%
+   total = 0
+    if nes == "t"
+    	total = total + console("nes")
+    end
+    if snes == "t"
+    	total = total + console("snes")
+    end
+       if n64 == "t"
+    	total = total + console("n64")
+    end
+    if sega_genesis == "t"
+    	total = total + console("sega_genesis")
+    end
+    if atari_2600 == "t"
+    	total = total + console("atari_2600")
+    end
+    %>
+
+<body> 
+<center><p><b><font size= "48" color= "white">Welcome to GameQuest which consoles are you hunting today?</font></b></p></center> 
+<center><font size="12" color= "white"><img align="center" src="images/galaga.jpg" width="180" height="180" />
+
+<div class="total">Your Total:<br>
+$<%= total.round(2) %></div>
+ <div class="total">Your Tax:<br>
+$<%= (total * 0.06).round(2).to_f %></div>
+
+
+<%
+
+tax = total * 0.06
+gtotal = total + tax
+%>
+<div class="total">Subtotal:<br>
+	$<%= '%.2f' %gtotal %>
+</div>
+
+
+<form method="post" action="add_collection">
+<input type="integer" name="payment">
+<input type="hidden" name="nes" value = <%= nes %>>
+<input type="hidden" name="snes" value = <%= snes %>>
+<input type="hidden" name="n64" value = <%= n64 %>>
+<input type="hidden" name="sega_genesis" value = <%= sega_genesis %>>
+<input type="hidden" name="atari_2600" value = <%= atari_2600 %>>
+<input type="hidden" name="total" value = <%= total %>>
+<input type="hidden" name="gtotal" value = <%= gtotal %>>
+<input type="submit" value="Total Given">
+</center>
+</body>
+
+<footer>
+	</footer>
